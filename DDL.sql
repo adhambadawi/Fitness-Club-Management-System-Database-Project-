@@ -119,3 +119,19 @@ CREATE TABLE MemberPhone (
     Phone NVARCHAR(100) PRIMARY KEY,
     FOREIGN KEY (MemberID) REFERENCES Members(MemberID)
 );
+
+
+-- Multivalued attribute table for the relationship between Trainers and their Phone numbers
+CREATE TABLE TrainerPhone (
+    Phone NVARCHAR(100) PRIMARY KEY,
+    FOREIGN KEY (TrainerID) REFERENCES Trainers(TrainerID)
+);
+
+
+-- Multivalued attribute table for the relationship between AdministrativeStaff and their Phone numbers
+CREATE TABLE StaffPhone (
+    Phone NVARCHAR(100) PRIMARY KEY,
+    FOREIGN KEY (StaffID) REFERENCES AdministrativeStaff(StaffID)
+);
+
+
