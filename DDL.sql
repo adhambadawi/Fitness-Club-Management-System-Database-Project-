@@ -109,8 +109,3 @@ CREATE TABLE Rooms_Equipment (
     FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID),
     FOREIGN KEY (EquipmentID) REFERENCES Equipment(EquipmentID)
 );
-
--- Note: This schema assumes that the 'n' and '1' indicators in the ER model represent one-to-many relationships, which are handled by foreign keys in the respective tables.
--- The associative tables handle the many-to-many relationships.
--- You may need to adjust the types and add more fields such as created_at, updated_at, etc., as per your requirements.
--- Also, consider adding indexes on foreign keys for performance improvements.
