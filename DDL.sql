@@ -109,3 +109,9 @@ CREATE TABLE Rooms_Equipment (
     FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID),
     FOREIGN KEY (EquipmentID) REFERENCES Equipment(EquipmentID)
 );
+
+-- Multivalued attribute table for the relationship between Members and their Phone numbers
+CREATE TABLE PersonalizedDashboards (
+    Phone NVARCHAR(100) PRIMARY KEY,
+    FOREIGN KEY (MemberID) REFERENCES Members(MemberID)
+);
