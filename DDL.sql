@@ -4,8 +4,11 @@ CREATE TABLE Members (
     FName VARCHAR(255),
     LName VARCHAR(255),
     DoB DATE,
-    Address TEXT,
-    HealthMetrics TEXT,
+    UnitNumber int,
+    StreetName VARCHAR(255),
+    City VARCHAR(255),
+    Province VARCHAR(255),
+    PostalCode VARCHAR(255),
     FitnessGoal TEXT,
     ClassSubscription INT,
     LoyaltyPoints INT
@@ -110,8 +113,9 @@ CREATE TABLE Rooms_Equipment (
     FOREIGN KEY (EquipmentID) REFERENCES Equipment(EquipmentID)
 );
 
+
 -- Multivalued attribute table for the relationship between Members and their Phone numbers
-CREATE TABLE PersonalizedDashboards (
+CREATE TABLE MemberPhone (
     Phone NVARCHAR(100) PRIMARY KEY,
     FOREIGN KEY (MemberID) REFERENCES Members(MemberID)
 );
