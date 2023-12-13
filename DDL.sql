@@ -20,7 +20,7 @@ CREATE TABLE Trainers (
     FName VARCHAR(255),
     LName VARCHAR(255),
     DoB DATE,
-    PrivateTrainingMembers INT -- Assuming this is a count; adjust if it's a foreign key or other type of field
+    PrivateTrainingMembers INT -- Assuming this is a count;
 );
 
 -- Table for Classes
@@ -36,6 +36,8 @@ CREATE TABLE Rooms (
     Name VARCHAR(255),
     RoomType VARCHAR(255),
     Availability BOOLEAN
+    StaffID INT,
+    FOREIGN KEY (StaffID) REFERENCES AdministrativeStaff(StaffID)
 );
 
 -- Table for Equipment
@@ -43,6 +45,8 @@ CREATE TABLE Equipment (
     EquipmentID INT PRIMARY KEY,
     EquipmentType VARCHAR(255),
     Description TEXT
+    StaffID INT,
+    FOREIGN KEY (StaffID) REFERENCES AdministrativeStaff(StaffID)
 );
 
 -- Table for Personalized Dashboard
@@ -61,9 +65,11 @@ CREATE TABLE PersonalTrainingSessions (
     SessionID INT PRIMARY KEY,
     SessionSchedule DATE,
     Time TIME,
-    Duration INT, -- Assuming duration is in minutes; adjust as necessary
+    Duration INT, -- Assuming duration is in minutes;
     MemberID INT,
     FOREIGN KEY (MemberID) REFERENCES Members(MemberID)
+    TrainerID INT,
+    FOREIGN KEY (TrainerID) REFERENCES Trainers(TrainerID)
 );
 
 -- Table for Billing
@@ -117,6 +123,7 @@ CREATE TABLE Rooms_Equipment (
 -- Multivalued attribute table for the relationship between Members and their Phone numbers
 CREATE TABLE MemberPhone (
     Phone NVARCHAR(100) PRIMARY KEY,
+    MemberID INT,
     FOREIGN KEY (MemberID) REFERENCES Members(MemberID)
 );
 
@@ -124,6 +131,7 @@ CREATE TABLE MemberPhone (
 -- Multivalued attribute table for the relationship between Trainers and their Phone numbers
 CREATE TABLE TrainerPhone (
     Phone NVARCHAR(100) PRIMARY KEY,
+    TrainerID INT,
     FOREIGN KEY (TrainerID) REFERENCES Trainers(TrainerID)
 );
 
@@ -131,6 +139,7 @@ CREATE TABLE TrainerPhone (
 -- Multivalued attribute table for the relationship between AdministrativeStaff and their Phone numbers
 CREATE TABLE StaffPhone (
     Phone NVARCHAR(100) PRIMARY KEY,
+    StaffID INT,
     FOREIGN KEY (StaffID) REFERENCES AdministrativeStaff(StaffID)
 );
 
