@@ -1,11 +1,11 @@
 --Insert a new member into the Members table:
-INSERT INTO Members (MemberID, FName, LName, DoB, Address, HealthMetrics, FitnessGoal, ClassSubscription, LoyaltyPoints)
-VALUES (1, 'John', 'Doe', '1990-01-01', '123 Main St', 'Good', 'Lose Weight', 1, 100);
+INSERT INTO Members (MemberID, FName, LName, DoB, Address, FitnessGoal, ClassSubscription, LoyaltyPoints)
+VALUES (1, 'Adham', 'Badawi', '2002-12-06', '123 Carleton St', 'Lose Weight', 1, 100);
 
 
 --Update the address of a member in the Members table:
 UPDATE Members
-SET Address = '456 Elm St'
+SET Address = '456 Bank St'
 WHERE MemberID = 1;
 
 
