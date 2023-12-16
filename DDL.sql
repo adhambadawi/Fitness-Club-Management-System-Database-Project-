@@ -65,7 +65,6 @@ CREATE TABLE PersonalTrainingSessions (
     SessionID INT PRIMARY KEY,
     SessionSchedule DATE,
     Time TIME,
-    Duration INT, -- Assuming duration is in minutes;
     MemberID INT,
     FOREIGN KEY (MemberID) REFERENCES Members(MemberID)
     TrainerID INT,
@@ -75,13 +74,32 @@ CREATE TABLE PersonalTrainingSessions (
 -- Table for Billing
 CREATE TABLE Billing (
     TransactionID INT PRIMARY KEY,
-    Amount DECIMAL(10, 2),
     Date DATE,
     PaymentMethod VARCHAR(255),
     Service VARCHAR(255),
     MemberID INT,
-    FOREIGN KEY (MemberID) REFERENCES Members(MemberID)
+    FOREIGN KEY (MemberID) REFERENCES Members(MemberID),
+    ServiceID INT,
+    FOREIGN KEY (ServiceID) REFERENCES Services(ServiceID),
 );
+
+-- Table for Services
+CREATE TABLE Services (
+    ServiceID INT PRIMARY KEY,
+    ServiceDescription VARCHAR(255),
+    Amount INT,
+);
+
+
+-- Table for SessionDuration
+CREATE TABLE SessionDuration (
+    Duration INT, --assuming duartion is in minutes
+    MemberID INT,
+    FOREIGN KEY (MemberID) REFERENCES Members(MemberID),
+    TrainerID INT,
+    FOREIGN KEY (TrainerID) REFERENCES Trainers(TrainerID),
+);
+
 
 -- Table for Administrative Staff
 CREATE TABLE AdministrativeStaff (
